@@ -3,83 +3,70 @@ package restaurant;
 
 import java.util.*;
 
-public class normal {
+ public class normal {
+  static Scanner input=new Scanner(System.in);
   protected String name;
   protected String meat;
   protected String bread;
-  protected String addition;
   protected int price;
-  protected String m;
-  private String b;
-  protected String d;
-    public normal() {
+  protected int[] add={0,10,5,5,10};
+
+   
+
+
+    public normal(String name,String meat,String bread) {
         
-    }
-    
-    public normal(String name) {
-        Scanner input=new Scanner(System.in);
         this.name = name;
-        
-        System.out.println("Do you want Beef or chicken ??");
-        m=input.next();
-        this.meat=m;
-        if("beef".equals(this.meat)||"Beef".equals(this.meat))
-            this.price+=30;
-        else
-            this.price+=25;
-        System.out.println("Do you want white or brown bread?");
-        b=input.next();
-        this.bread=b;
-        if("brown".equals(this.bread)||"Brown".equals(this.bread))
-           this.price+=10;
-        else 
-             this.price+=15;
-        System.out.println("Do you want additions (please answer (YES or NO))?"); 
-        d=input.next();
-       add(d); 
-        
+        setMeat(meat);
+        setBread(bread);
+        addition();
     }
-   public void add(String d){
-         Scanner input=new Scanner(System.in);
-      if("YES".equals(d)) {      
-          System.out.println("The additions are (Cheese, Tomato, Chips, Drink) \n How much do you want?"); 
-          int c=input.nextInt();
-          System.out.println("Please write the additions you want : ");
-          while(c>0){
-              String a=input.next();
-              this.addition=a;
-              if("Cheese".equals(this.addition)||"cheese".equals(this.addition))
-                  price+=10;
-              else if ("Chips".equals(this.addition)||"chips".equals(this.addition))
-                  price+=5;
-              else if ("Drink".equals(this.addition)||"drink".equals(this.addition))
-                  price+=10;
-              else 
-                  price+=5;
-              c--;
+    public void addition(){
+        System.out.println("Do you want additions (please answer (YES or NO))?"); 
+           String  d=input.next();
+
+      if("YES".equals(d)) {   
+          System.out.println("The additions are 1) Cheese   2) Tomato   3)Chips    4) Drink "); 
+          System.out.println("\"Please write \'0\' when you finish\" ");
+     int a=input.nextInt();
+     if(a<=4)
+        price+=add[a];
+else
+              System.out.println("this addition is not exist");
+     while(a!=0){ 
+       a=input.nextInt();
+        price+=add[a];}
+        
           }
       }
-   }
+   
     public void setName(String name) {
         this.name = name;
     }
 
     public void setMeat(String meat) {
         this.meat = meat;
+        if("beef".equals(this.meat)||"Beef".equals(this.meat))
+            this.price+=30;
+        else
+            this.price+=25;
     }
 
     public void setBread(String bread) {
         this.bread = bread;
+        if("brown".equals(this.bread)||"Brown".equals(this.bread))
+           this.price+=10;
+        else 
+             this.price+=15;
+    }
+     public int getPrice() {
+        return price;
     }
 
-    public void setAddition(String addition) {
-        this.addition = addition;
-    }
 
     public String getName() {
         return name;
     }
-
     public String getMeat() {
         return meat;
     }
@@ -88,12 +75,10 @@ public class normal {
         return bread;
     }
 
-    public String getAddition() {
-        return addition;
-    }
      @Override
  public String toString()
  {
+   
  return (this.name+" Your order is ready "+"the normal burger sandwich price = "+this.price+" L.E");
  }
   
