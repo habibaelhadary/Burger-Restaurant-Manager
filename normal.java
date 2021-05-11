@@ -1,4 +1,5 @@
 
+
 package restaurant;
 
 import java.util.*;
@@ -31,11 +32,15 @@ import java.util.*;
      int a=input.nextInt();
      if(a<=4)
         price+=add[a];
-else
+     else
               System.out.println("this addition is not exist");
      while(a!=0){ 
        a=input.nextInt();
-        price+=add[a];}
+    if(a<=4)
+        price+=add[a];
+     else
+              System.out.println("this addition is not exist Choose another number");
+     }
         
           }
       }
@@ -76,11 +81,10 @@ else
     }
 
      @Override
- public String toString()
- {
+    public String toString(){
    
- return (this.name+" Your order is ready "+"the normal burger sandwich price = "+this.price+" L.E");
- }
+      return ("** the normal burger sandwich price = "+this.price+" L.E");
+    } 
   
   
 }

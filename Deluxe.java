@@ -1,3 +1,4 @@
+
 package restaurant;
 
 class Deluxe extends normal {
@@ -13,7 +14,7 @@ class Deluxe extends normal {
 
     @Override
     public String toString() {
-        return (this.name + " Your order is ready " + "the Deluxe Burger sandwich price = " + this.price + " L.E");
+        return ( "** the Deluxe Burger sandwich price = " + this.price + " L.E");
     }
 
 }
